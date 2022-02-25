@@ -55,6 +55,10 @@ const CustomSwitch = ({ active, setActive }: CustomSwitchPropTypes) => {
             [classes.switchActive]: active.map,
             [classes.switch]: !active.map,
           })}
+          //onclick to toggle map andsetActive gets the previous value and toggles the value
+          onClick={() => setActive((previous)=>{
+            return {...previous,map:true,list:false}
+          })}
         >
           <LocationOnTwoToneIcon
             className={clsx({
@@ -69,7 +73,10 @@ const CustomSwitch = ({ active, setActive }: CustomSwitchPropTypes) => {
             [classes.switchActive]: active.list,
             [classes.switch]: !active.list,
           })}
-          onClick={() => setActive({ map: false, list: true })}
+          //onclick to toggle map andsetActive gets the previous value and toggles the value
+          onClick={() => setActive((previous)=>{
+            return {...previous,map:false,list:true}
+          })}
         >
           <ListTwoToneIcon
             className={clsx({

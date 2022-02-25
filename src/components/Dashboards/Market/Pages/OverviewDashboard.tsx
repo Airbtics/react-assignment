@@ -7,6 +7,7 @@ import {
   COLOR_PRIMARY_LIGHT,
   COLOR_ACCENT_1,
   COLOR_ACCENT_2,
+  COLOR_ACCENT_3,
   outerCoords,
   COLOR_TOOLTIP_BACKGROUND,
 } from 'src/const';
@@ -548,6 +549,22 @@ const OverviewDashboard = ({
           )}
         </Grid>
 
+        <Grid item xs={12} md={4} lg={4}>
+          {listings.loading || visibleListings.loading ? (
+            <LoadingCard color={COLOR_ACCENT_3} height={150} />
+          ) : (
+            <DigestCard
+              title="Revenue Rate"//needs to change
+              data={dynamicRev}//this should be updated with dynamicRev function
+              color={COLOR_ACCENT_3}
+              isDisabled={isDisabled}
+              multipleMarkersCallLoading={multipleMarkersCallLoading}
+              dynamicTrigger={dynamicTrigger}
+              setSubscriptionModalOpen={setSubscriptionModalOpen}
+            />
+          )}
+        </Grid>
+
         {/* Mobile view */}
 
         {matches && (
@@ -600,6 +617,7 @@ const OverviewDashboard = ({
                       </Typography>
                     </InfoTooltip>
 
+                    {/* custom switch here */}
                     <CustomSwitch active={active} setActive={setActive} />
                   </div>
                 </div>

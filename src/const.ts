@@ -22,6 +22,7 @@ export const COLOR_ACCENT_1_GRADIENT = [
   '#1a000a',
 ];
 export const COLOR_ACCENT_2 = '#FF5F01'; //"#FF5F01"//"#CE96FB"
+export const COLOR_ACCENT_3 = '#01c6ff'
 export const COLOR_ACCENT_2_CONTRAST = '#64b5f6';
 export const COLOR_ACCENT_2_GRADIENT = ['#0a62a9', '#e7f3fe'];
 export const COLOR_E = '#551A8B'; //'SAMPLE' WATERMARK

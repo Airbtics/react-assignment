@@ -641,12 +641,49 @@ export const getDynamicOccupancyRate = (listings: Listing[]) => {
   return dynamicOccupancyRate;
 };
 
+
 export const getDynamicRev = (listings: Listing[]) => {
   let dynamicRev: Revenue[] = [];
-  // implement this
+  let revenueCount : number[]= [];
 
+  if(listings.length > 0){
+    //make an empty array of length 12
+    listings[0].revenue.map((adrObj, index) => {
+      dynamicRev[index] = {
+        date: adrObj.date,
+        revenue: 0,
+      };
+      revenueCount[index] = 0;
+    });
+
+    //add all the revenue together of all the months the rooms were used
+    listings.map((listing:Listing) => { 
+      for(let index = 0; index < 12; index++){
+        dynamicRev[index].date = listing.revenue[index].date;
+
+        if (listing.revenue[index].revenue != -1) {
+          dynamicRev[index].revenue += 
+            listing.revenue[index].revenue;
+            revenueCount[index] += 1;
+        }
+      }
+    });
+
+    //devide the sum with revenueCount to get the average revenue
+    //revenueCount stores how many times the room was used
+    dynamicRev.map((dynamicRevObj, i)=>{
+      if(revenueCount[i] != 0){
+        dynamicRevObj.revenue = Math.round(
+          dynamicRevObj.revenue / revenueCount[i]
+        );
+      }
+    })
+
+  }
+  // implement this
   return dynamicRev;
 };
+
 
 export const getDynamicExtraFees = (listings: Listing[]) => {
   let dynamicExtraFees: UtilityData = {};
